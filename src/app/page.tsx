@@ -175,8 +175,8 @@ export default function Home() {
   return (
     <main className="app-container">
       <div className="glass-panel text-center">
-        <h1 className="title">SYS.OP_FORENSIC_REDACTOR v9.4</h1>
-        <p className="subtitle">&gt; INITIALIZING FORENSIC PARSER // PII ERADICATION PROTOCOL...</p>
+        <h1 className="title">Redacta — Forensic Redactor</h1>
+        <p className="subtitle">&gt; Secure document redaction // PII detection active</p>
 
         {!file && (
           <div 
@@ -187,9 +187,9 @@ export default function Home() {
             onClick={() => document.getElementById('fileUpload')?.click()}
           >
             <Terminal className="dropzone-icon" />
-            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', fontWeight: 600 }}>DRAG_AND_DROP(PAYLOAD) || CLICK_TO_INJECT();</h3>
-            <p style={{ color: 'var(--text-muted)' }}>&gt; AWAITING PAYLOAD INJECTION...</p>
-            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>SUPPORTED EXTENSIONS: .PDF, .TXT</p>
+            <h3 style={{ fontSize: '1.25rem', marginBottom: '0.5rem', fontWeight: 600 }}>Drag & drop your file or click to browse</h3>
+            <p style={{ color: 'var(--text-muted)' }}>&gt; Awaiting file input...</p>
+            <p style={{ fontSize: '0.8rem', color: 'var(--text-muted)', marginTop: '0.5rem' }}>Supported formats: .PDF, .TXT</p>
             <input 
               id="fileUpload" 
               type="file" 
@@ -204,7 +204,7 @@ export default function Home() {
         {error && (
           <div style={{ marginTop: '1rem', padding: '1rem', background: 'rgba(255, 0, 60, 0.1)', color: 'var(--danger)', borderRadius: '0', border: '1px solid var(--danger)', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '0.5rem' }}>
             <AlertCircle size={20} />
-            [FATAL_EXCEPTION]: {error}
+            Error: {error}
           </div>
         )}
 
@@ -213,7 +213,7 @@ export default function Home() {
             <div className="file-info">
               <Database size={24} color="var(--primary)" />
               <div style={{ flex: 1, textAlign: 'left' }}>
-                <div style={{ fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>[TARGET_LOCK]: {file.name}</div>
+                <div style={{ fontWeight: 600, overflow: 'hidden', textOverflow: 'ellipsis', whiteSpace: 'nowrap' }}>File: {file.name}</div>
                 <div style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>SIZE: {(file.size / 1024).toFixed(1)} KB</div>
               </div>
               <button 
@@ -232,7 +232,7 @@ export default function Home() {
               <div style={{ marginTop: '2.5rem', marginBottom: '2.5rem' }}>
                 <h3 style={{ marginBottom: '1rem', color: 'var(--text-main)', textAlign: 'left', display: 'flex', alignItems: 'center', textShadow: '0 0 5px var(--danger)' }}>
                   <Crosshair size={20} style={{ marginRight: '0.5rem', color: 'var(--danger)' }}/>
-                  &gt; TARGET ALIGNMENT: CLICK TO LOCK FORENSIC MARKERS
+                  &gt; Click on text to mark for redaction
                 </h3>
                 <div 
                   className="pdf-viewer-container" 
@@ -266,18 +266,18 @@ export default function Home() {
               {isProcessing ? (
                 <>
                   <Loader className="loading-spinner" size={20} />
-                  &gt; ERADICATING PAYLOAD CHUNKS...
+                  &gt; Processing redaction...
                 </>
               ) : (
                 <>
                   <Lock size={20} />
-                  [ EXECUTE FORENSIC OVERWRITE ]
+                  [ Apply Redaction ]
                 </>
               )}
             </button>
             
             {isProcessing && (
-              <p className="status-text">&gt; NEURAL NET SECURING VECTORS...</p>
+              <p className="status-text">&gt; Securing document...</p>
             )}
           </div>
         )}
@@ -285,8 +285,8 @@ export default function Home() {
         {redactedFileUrl && (
           <div style={{ marginTop: '2rem', padding: '2rem', background: 'var(--panel-bg)', border: '1px solid var(--border-color)', borderRadius: '0' }}>
             <Lock size={48} color="var(--primary)" style={{ margin: '0 auto 1rem' }} />
-            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--text-main)' }}>OVERWRITE_SUCCESSFUL // DATA_NULLIFIED</h3>
-            <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem' }}>&gt; FORENSIC CLEANSE COMPILED FOR: [ {file?.name} ]</p>
+            <h3 style={{ fontSize: '1.5rem', marginBottom: '0.5rem', color: 'var(--text-main)' }}>Redaction Complete</h3>
+            <p style={{ color: 'var(--text-muted)', marginBottom: '1.5rem' }}>&gt; Secure output ready for: {file?.name}</p>
             
             <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }}>
               <button 
@@ -298,7 +298,7 @@ export default function Home() {
                   setRedactedFileUrl(null);
                 }}
               >
-                INJECT_NEW()
+                New File
               </button>
               <a 
                 href={redactedFileUrl} 
@@ -307,7 +307,7 @@ export default function Home() {
                 style={{ background: 'var(--primary)', color: 'var(--bg-color)', textDecoration: 'none', fontWeight: 'bold' }}
               >
                 <Download size={20} />
-                EXTRACT_SECURE_PAYLOAD
+                Download Secure PDF
               </a>
             </div>
           </div>
