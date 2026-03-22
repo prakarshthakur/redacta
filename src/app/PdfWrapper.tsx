@@ -28,7 +28,7 @@ export default function PdfWrapper({ fileUrl, numPages, setNumPages }: PdfWrappe
               renderTextLayer={true}
               renderAnnotationLayer={false}
               className="react-pdf__Page"
-              width={typeof window !== 'undefined' ? Math.min(window.innerWidth * 0.9, 800) : 800}
+              width={typeof window !== 'undefined' ? Math.min(window.innerWidth - 60, 800) : 800}
             />
           </div>
         ))}
